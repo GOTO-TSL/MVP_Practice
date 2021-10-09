@@ -40,10 +40,15 @@ class View: UIView {
         return button
     }()
     
+    let pickerView: UIPickerView = {
+        let pickerView = UIPickerView()
+        return pickerView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let stack = UIStackView(arrangedSubviews: [quizLabel, answerLabel, textField])
+        let stack = UIStackView(arrangedSubviews: [quizLabel, answerLabel, pickerView])
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fillEqually
