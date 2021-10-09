@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     var pickers = [0: "0", 1: "0", 2: "0"]
-    var pbnumber = ""
+    var pbnumber = "1"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +54,6 @@ class ViewController: UIViewController {
     
     @objc func answer(_ sender: UIButton) {
         // presenterに通知
-        print("pressed")
         presenter.answerButtonPressed(number: pbnumber)
     }
 
@@ -79,21 +78,20 @@ extension ViewController: UIPickerViewDataSource {
 extension ViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickers[component] = numbers[row]
-        var hundred = pickers[0] ?? "0"
+        let hundred = pickers[0] ?? "0"
         let ten = pickers[1] ?? "0"
         let one = pickers[2] ?? "0"
-        if hundred == "0" {
-            hundred = ""
+        
+        let number = Int(hundred + ten + one)!
+        if number <= 898 {
+            pbnumber = String(number)
         }
-        pbnumber = hundred + ten + one
-        print(pbnumber)
     }
 }
 
 // MARK: - MainViewPresenterOutput Methods
 extension ViewController: MainViewPresenterOutput {
     func didGetPokeModel(_ mainViewPresenter: MainViewPresenter, pokeModel: PokeModel) {
-        print("fetch")
         DispatchQueue.main.async {
             self.quizLabel.text = pokeModel.name
             self.answerLabel.text = pokeModel.text
