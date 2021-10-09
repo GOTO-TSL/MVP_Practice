@@ -19,6 +19,7 @@ class View: UIView {
     let answerLabel: UILabel = {
         let label = UILabel()
         label.text = "結果"
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

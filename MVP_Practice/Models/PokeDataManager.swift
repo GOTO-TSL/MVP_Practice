@@ -7,17 +7,23 @@
 
 import Foundation
 
+protocol PokeDataManagerDelegate {
+    func didGetPoke(_ pokeDataManager: PokeDataManager, pokeModel: PokeModel)
+}
+
 struct PokeDataManager {
     
-    func featchPoke() {
-        let urlString = "https://pokeapi.co/api/v2/pokemon-species/836"
+    var delegate: PokeDataManagerDelegate?
+    
+    func featchPoke(number: String) {
+        let urlString = "https://pokeapi.co/api/v2/pokemon-species/\(number)"
         guard let url = URL(string: urlString) else { fatalError() }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let safeData = data else { fatalError() }
             let pokeModel = parseJSON(safeData)
-            guard let flavor = pokeModel?.text else { return }
-            print(flavor)
+            guard let pokeModelSafty = pokeModel else { fatalError() }
+            self.delegate?.didGetPoke(self, pokeModel: pokeModelSafty)
         }
         task.resume()
     }
