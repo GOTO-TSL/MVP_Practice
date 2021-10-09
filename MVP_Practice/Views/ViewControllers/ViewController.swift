@@ -14,12 +14,16 @@ class ViewController: UIViewController {
     var pickerView: UIPickerView!
     var answerButton: UIButton!
     
+    var pokeDataManager: PokeDataManager!
+    
     let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pokeDataManager = PokeDataManager()
         configureUI()
+        pokeDataManager.featchPoke()
         
     }
     
