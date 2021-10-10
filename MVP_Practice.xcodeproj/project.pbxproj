@@ -21,6 +21,7 @@
 		022DA6BE27117A59005D9336 /* PokeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DA6BD27117A59005D9336 /* PokeData.swift */; };
 		022DA6C027117A6A005D9336 /* PokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DA6BF27117A6A005D9336 /* PokeModel.swift */; };
 		022DA6C227119766005D9336 /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022DA6C127119766005D9336 /* MainViewPresenter.swift */; };
+		0268BDBB27128ADB000AA37F /* PokeVsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0268BDBA27128ADB000AA37F /* PokeVsData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		022DA6BD27117A59005D9336 /* PokeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeData.swift; sourceTree = "<group>"; };
 		022DA6BF27117A6A005D9336 /* PokeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeModel.swift; sourceTree = "<group>"; };
 		022DA6C127119766005D9336 /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
+		0268BDBA27128ADB000AA37F /* PokeVsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeVsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				022DA6BB27117A48005D9336 /* PokeDataManager.swift */,
 				022DA6BD27117A59005D9336 /* PokeData.swift */,
 				022DA6BF27117A6A005D9336 /* PokeModel.swift */,
+				0268BDBA27128ADB000AA37F /* PokeVsData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				022DA6C027117A6A005D9336 /* PokeModel.swift in Sources */,
 				022DA6BE27117A59005D9336 /* PokeData.swift in Sources */,
 				022DA68527116692005D9336 /* AppDelegate.swift in Sources */,
+				0268BDBB27128ADB000AA37F /* PokeVsData.swift in Sources */,
 				022DA68727116692005D9336 /* SceneDelegate.swift in Sources */,
 				022DA6BC27117A48005D9336 /* PokeDataManager.swift in Sources */,
 			);

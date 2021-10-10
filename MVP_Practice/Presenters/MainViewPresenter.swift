@@ -13,6 +13,7 @@ protocol MainViewPresenterInput {
 
 protocol MainViewPresenterOutput {
     func didGetPokeModel(_ mainViewPresenter: MainViewPresenter, pokeModel: PokeModel)
+    func didGetPokeImageModel(_ mainViewPresenter: MainViewPresenter, pokeModel: PokeModel)
 }
 
 class MainViewPresenter {
@@ -29,10 +30,15 @@ class MainViewPresenter {
     func answerButtonPressed(number: String) {
         // モデルに処理を依頼
         model.featchPoke(number: number)
+        model.featchPokeImage(name: "")
     }
 }
 // MARK: - PokeDataManagerDelegate Methods
 extension MainViewPresenter: PokeDataManagerDelegate {
+    func didGetPokeImage(_ pokeDataManager: PokeDataManager, pokeModel: PokeModel) {
+        view.didGetPokeImageModel(self, pokeModel: pokeModel)
+    }
+    
     func didGetPoke(_ pokeDataManager: PokeDataManager, pokeModel: PokeModel) {
         view.didGetPokeModel(self, pokeModel: pokeModel)
     }

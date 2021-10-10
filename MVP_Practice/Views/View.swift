@@ -11,14 +11,21 @@ class View: UIView {
     // MARK: - Properties
     let quizLabel: UILabel = {
         let label = UILabel()
-        label.text = "図鑑説明：〇〇このポケモンは？"
+        label.text = "ポケモン名"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     let answerLabel: UILabel = {
         let label = UILabel()
-        label.text = "結果"
+        label.text = "図鑑説明"
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -35,7 +42,7 @@ class View: UIView {
     
     let answerButton: UIButton = {
         let button = UIButton()
-        button.setTitle("回答", for: .normal)
+        button.setTitle("送信", for: .normal)
         button.backgroundColor = .red
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -49,7 +56,7 @@ class View: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let stack = UIStackView(arrangedSubviews: [quizLabel, answerLabel, textField,  pickerView])
+        let stack = UIStackView(arrangedSubviews: [quizLabel, imageView, answerLabel, textField,  pickerView])
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fillEqually

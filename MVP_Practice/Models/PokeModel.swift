@@ -10,4 +10,5 @@ import Foundation
 struct PokeModel {
     var name: String = ""
     var text: String = ""
+    var image: String = ""
 }
