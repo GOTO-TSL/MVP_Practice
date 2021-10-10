@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     var quizLabel: UILabel!
     var answerLabel: UILabel!
+    var textField: UITextField!
     var pickerView: UIPickerView!
     var answerButton: UIButton!
     
@@ -34,9 +35,11 @@ class ViewController: UIViewController {
         
         quizLabel = mainView.quizLabel
         answerLabel = mainView.answerLabel
+        textField = mainView.textField
         pickerView = mainView.pickerView
         answerButton = mainView.answerButton
         
+        textField.delegate = self
         pickerView.delegate = self
         pickerView.dataSource = self
         
@@ -96,6 +99,20 @@ extension ViewController: MainViewPresenterOutput {
             self.quizLabel.text = pokeModel.name
             self.answerLabel.text = pokeModel.text
         }
+    }
+}
+
+// MARK: - UITextFieldDelegate Methods
+extension ViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.endEditing(true)
+        guard let text = textField.text else { return }
+        print(text)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
     }
 }
 
