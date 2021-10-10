@@ -49,7 +49,7 @@ class View: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let stack = UIStackView(arrangedSubviews: [quizLabel, answerLabel, pickerView])
+        let stack = UIStackView(arrangedSubviews: [quizLabel, answerLabel, textField,  pickerView])
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fillEqually
