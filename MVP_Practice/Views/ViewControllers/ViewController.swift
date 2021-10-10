@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var textField: UITextField!
     var pickerView: UIPickerView!
     var answerButton: UIButton!
+    var imageView: UIImageView!
     
     var presenter: MainViewPresenter!
     
@@ -38,6 +39,7 @@ class ViewController: UIViewController {
         textField = mainView.textField
         pickerView = mainView.pickerView
         answerButton = mainView.answerButton
+        imageView = mainView.imageView
         
         textField.delegate = self
         pickerView.delegate = self
@@ -58,6 +60,18 @@ class ViewController: UIViewController {
     @objc func answer(_ sender: UIButton) {
         // presenterに通知
         presenter.answerButtonPressed(number: pbnumber)
+    }
+    
+    // urlから画像を取得
+    func getImageByUrl(url: String) -> UIImage {
+        let url = URL(string: url)
+        do {
+            let data = try Data(contentsOf: url!)
+            return UIImage(data: data)!
+        } catch let err {
+            print("Error : \(err.localizedDescription)")
+        }
+        return UIImage()
     }
 
 }
@@ -94,6 +108,12 @@ extension ViewController: UIPickerViewDelegate {
 
 // MARK: - MainViewPresenterOutput Methods
 extension ViewController: MainViewPresenterOutput {
+    func didGetPokeImageModel(_ mainViewPresenter: MainViewPresenter, pokeModel: PokeModel) {
+        DispatchQueue.main.async {
+            self.imageView.image = self.getImageByUrl(url: pokeModel.image)
+        }
+    }
+    
     func didGetPokeModel(_ mainViewPresenter: MainViewPresenter, pokeModel: PokeModel) {
         DispatchQueue.main.async {
             self.quizLabel.text = pokeModel.name

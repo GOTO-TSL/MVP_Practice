@@ -16,6 +16,13 @@ class View: UIView {
         return label
     }()
     
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     let answerLabel: UILabel = {
         let label = UILabel()
         label.text = "図鑑説明"
@@ -49,7 +56,7 @@ class View: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let stack = UIStackView(arrangedSubviews: [quizLabel, answerLabel, textField,  pickerView])
+        let stack = UIStackView(arrangedSubviews: [quizLabel, imageView, answerLabel, textField,  pickerView])
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fillEqually
